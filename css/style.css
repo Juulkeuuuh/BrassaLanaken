@@ -1,0 +1,416 @@
+:root {
+  --color1: #161616;
+  --color2: #EEE9E7;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p.credits{
+  margin: auto;
+  text-align: center;
+  font-size: 6px;
+  margin-bottom: 10px;
+}
+
+p.credits a{
+  text-decoration: underline;
+}
+
+
+a{
+  color: var(--color2);
+  text-decoration: none;
+}
+
+.deco-icon{
+  width: 70%;
+  translate: -10% -30%;
+  position: fixed;
+  top: 0;
+  opacity: .03;
+  z-index: -1;
+}
+
+button{
+  background: none;
+  border: none;
+}
+
+button.b-w{
+  position: fixed;
+  left: 5px;
+  top: 5px;
+}
+
+button.b-w .btnback{
+  position: relative;
+  width: 40px;
+  height: 20px;
+  border-radius: 100px;
+  background: var(--color2);
+}
+
+
+.btncrcl{
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  background: var(--color1);
+  border-radius: 100px;
+  transition: all 500ms ease;
+
+}
+
+
+
+
+/* body */
+body{
+  overflow-x: hidden;
+  background: #161616;
+  color: #EEE9E7;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+
+.right-align{
+  text-align: right;
+}
+.left-align{
+  text-align: left;
+}
+
+.right-padding{
+  padding-right: 20px;
+}
+.left-padding{
+  padding-left: 20px;
+}
+
+.left-float{
+  float: left;
+}
+
+.right-float{
+  float: right;
+}
+
+.clear{
+  clear: both;
+}
+
+
+/* header */
+header{
+  width: 100vw;
+  height: 100vh;
+}
+
+.logo-header{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+
+}
+.logo-header img.text{
+  scale: 1.5;
+}
+.translate5050{
+  translate: -50% -50%;
+}
+.logo.fixed {
+  top: 5%;
+  transform: translate(-50%, 0) scale(0.5);
+}
+main button{
+  opacity: 0.3;
+  scale: 0.7;
+  transition: all 1000ms ease;
+}
+header button{
+  opacity: 0.3;
+  scale: 0.7;
+  transition: all 1000ms ease;
+}
+
+button.reserveer{
+  width: 220px;
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  translate: -50% 0;
+}
+
+button.reserveer img{
+  width: 90%;
+  /* margin: 5% 0; */
+}
+
+
+
+button:hover{
+  cursor: pointer;
+  scale: 0.8;
+}
+
+.arrow-down{
+  position: fixed;
+  bottom: 2%;
+  left: 50%;
+  translate: -50% 0;
+  animation: jump .5s infinite alternate;
+}
+
+@keyframes jump {
+  0% {
+    translate: -50% 0
+  }
+  100% {
+    translate: -50% -5px; /* Adjust this value to control the jump height */
+  }
+}
+
+/* main */
+main{
+  /* background: green; */
+
+
+  width: 100%;
+}
+.main-container{
+  max-width: 1000px;
+  margin: auto;
+  /* background: red; */
+  text-align: center;
+}
+main h1{
+  font-size: 110px;
+  text-transform: uppercase;
+  letter-spacing: 50px;
+  margin-bottom: 90px;
+  padding-left: 25px;
+  line-height: 1.4;
+}
+h1.kleiner{
+  font-size: 55px;
+  letter-spacing: 20px;
+  margin-bottom: 45px;
+  padding-left: 25px;
+  line-height: 1.4;
+}
+
+main p{
+  line-height: 1.4;
+  font-size: 18px;
+}
+
+main p strong{
+  font-weight: 900;
+}
+
+.overOnsTextHalf{
+  width: 48%;
+  margin-bottom: 45px;
+}
+.overOnsTextFull{
+  width: 100%;
+}
+
+.overOnsTextFull img.fototje{
+  width: 50%;
+  margin-bottom: 45px;
+  margin-top: 45px;
+
+  border: 1px solid #EEE9E7;
+  padding: 3px;
+}
+
+.overOns{
+  margin-bottom: 300px;
+}
+.menukaart{
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+.menu{
+  margin-bottom: 100px;
+}
+.locatie{
+  margin-bottom: 300px;
+}
+
+
+.fotos{
+  margin-bottom: 100px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+
+.fotos img{
+  width: 30%;
+  position: absolute;
+  border: 1px solid #EEE9E7;
+  padding: 3px;
+}
+
+.fotos img.imgOne{
+  width: 30%;
+  /* left: 10%; */
+  right: 50%;
+  top: 3%;
+
+}
+.fotos img.imgTwo{
+  width: 35%;
+  left: 54%;
+  top: 25%;
+}
+.fotos img.imgThree{
+  width: 40%;
+  /* left: 30%; */
+  right: 50%;
+  bottom: 0;
+}
+
+.fotosTwee{
+  margin-bottom: 100px;
+  aspect-ratio: .6;
+  position: relative;
+  
+}
+
+.fotosTwee img{
+  width: 30%;
+  position: absolute;
+  border: 1px solid #EEE9E7;
+  padding: 3px;
+}
+
+.fotosTwee img.imgOne{
+  width: 30%;
+  right: 52%;
+  top: 0;
+
+}
+.fotosTwee img.imgTwo{
+  width: 35%;
+  left: 52%;
+  /* top: 10%; */
+  bottom: 60%;
+}
+.fotosTwee img.imgThree{
+  width: 40%;
+  right: 52%;
+  top: 26%;
+}
+.fotosTwee img.imgFour{
+  width: 40%;
+  left: 52%;
+  /* top: 40%; */
+  bottom: 26%;
+}
+.fotosTwee img.imgFive{
+  width: 35%;
+  right: 52%;
+  top: 60%;
+}
+.fotosTwee img.imgSix{
+  left: 52%;
+  width: 30%;
+  bottom: 0;
+}
+
+@media screen and (max-width: 1050px){
+  .main-container{
+    max-width: 90%;
+    margin: auto;
+    /* background: red; */
+    text-align: center;
+  }
+  main h1{
+    font-size: 100px;
+    letter-spacing: 47px;
+  }
+  h1.kleiner{
+    font-size: 50px;
+    letter-spacing: 17px;
+  }
+}
+
+@media screen and (max-width: 750px){
+  main h1{
+    font-size: 55px;
+    letter-spacing: 35px;
+  }
+  h1.kleiner{
+    font-size: 35px;
+    letter-spacing: 15px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .overOnsTextHalf{
+    width: 90%;
+    margin: 0 5%;
+
+    margin-bottom: 45px;
+    text-align: center;
+    margin-bottom: 25px;
+
+  }
+  .overOnsTextFull{
+    width: 90%;
+    margin: 0 5%;
+
+  }
+  .overOns{
+    margin-bottom: 150px;
+  }
+  main h1{
+    font-size: 35px;
+    letter-spacing: 30px;
+  }
+  h1.kleiner{
+    font-size: 25px;
+    letter-spacing: 10px;
+  }
+  main p{
+  font-size: 12px;
+  }
+  button{
+    scale: 0.6;
+  }
+  button:hover{
+    cursor: pointer;
+    scale: 0.7;
+  }
+  .overOnsTextFull img.fototje{
+    width: 100%;
+
+  }
+}
+
+
+/* footer */
+footer h2{
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+footer p{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  line-height: 1.4;
+}
+
+footer p strong{
+  font-weight: 100;
+}
