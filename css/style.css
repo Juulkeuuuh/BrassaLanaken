@@ -281,7 +281,7 @@ main p strong{
 
 .fotosTwee{
   margin-bottom: 100px;
-  aspect-ratio: .6;
+  aspect-ratio: .58;
   position: relative;
   
 }
@@ -303,7 +303,7 @@ main p strong{
   width: 35%;
   left: 52%;
   /* top: 10%; */
-  bottom: 60%;
+  bottom: 66%;
 }
 .fotosTwee img.imgThree{
   width: 40%;
@@ -314,12 +314,12 @@ main p strong{
   width: 40%;
   left: 52%;
   /* top: 40%; */
-  bottom: 26%;
+  bottom: 28.2%;
 }
 .fotosTwee img.imgFive{
   width: 35%;
   right: 52%;
-  top: 60%;
+  top: 62.8%;
 }
 .fotosTwee img.imgSix{
   left: 52%;
