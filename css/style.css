@@ -2,6 +2,9 @@
   --color1: #161616;
   --color2: #EEE9E7;
 }
+html{
+  scroll-padding-top: 80px;
+}
 *{
   margin: 0;
   padding: 0;
@@ -44,6 +47,98 @@ a{
   top: 0;
   opacity: .03;
   z-index: -1;
+}
+
+.page-section{
+  scroll-margin-top: 80px;
+}
+
+.page-progress-nav{
+  --scroll-progress: 0;
+  position: fixed;
+  left: clamp(24px, 3vw, 54px);
+  top: 50%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 0 18px 14px;
+  translate: 0 -50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 450ms ease;
+}
+
+body.show-section-nav .page-progress-nav{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.page-progress-nav::before,
+.page-progress-nav::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 1px;
+  height: calc(100% - 36px);
+  background: var(--color2);
+  opacity: .12;
+}
+
+.page-progress-nav::after{
+  height: calc((100% - 36px) * var(--scroll-progress));
+  opacity: .7;
+  box-shadow: 0 0 20px rgba(238, 233, 231, .2);
+  transition: height 180ms linear;
+}
+
+.page-progress-nav a{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 26px;
+  color: var(--color2);
+  opacity: .48;
+  transition: opacity 300ms ease, translate 300ms ease;
+}
+
+.page-progress-nav a:hover,
+.page-progress-nav a.is-active{
+  opacity: 1;
+  translate: 4px 0;
+}
+
+.nav-mark{
+  display: block;
+  width: 34px;
+  height: 1px;
+  background: currentColor;
+  opacity: .72;
+  transform-origin: left center;
+  transition: width 360ms ease, height 360ms ease, opacity 360ms ease;
+}
+
+.page-progress-nav a.is-active .nav-mark{
+  width: 58px;
+  height: 3px;
+  opacity: 1;
+}
+
+.nav-label{
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: .72;
+  transition: opacity 300ms ease;
+}
+
+.page-progress-nav a.is-active .nav-label,
+.page-progress-nav a:hover .nav-label{
+  opacity: 1;
 }
 
 button{
@@ -240,13 +335,21 @@ main p strong{
 }
 
 .overOnsTextFull .fototje{
-  width: 50%;
-  height: min(70vh, 720px);
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
   margin-bottom: 45px;
   margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
 
   border: 1px solid #EEE9E7;
   padding: 3px;
+}
+
+.suggestie-link{
+  display: inline-block;
+  max-width: 100%;
 }
 
 .overOns{
@@ -312,13 +415,14 @@ main p strong{
   position: relative;
   width: min(100%, 1000px);
   margin: 0 auto;
-  padding: 20px 0 0;
+  padding: 20px 0 18px;
 }
 
 .reel-stage{
   position: relative;
   height: clamp(500px, 58vw, 700px);
-  overflow: hidden;
+  overflow: visible;
+  touch-action: pan-y;
 }
 
 .reel-card{
@@ -376,7 +480,7 @@ main p strong{
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border: 1px solid var(--color2);
+  border: 1px solid #EEE9E7;
   padding: 3px;
   background: #000;
   box-shadow: 0 20px 55px rgba(0, 0, 0, .26);
@@ -384,7 +488,6 @@ main p strong{
 }
 
 .reel-card.is-active .reel-frame{
-  border-width: 2px;
   box-shadow: 0 22px 70px rgba(0, 0, 0, .38);
 }
 
@@ -393,6 +496,10 @@ main p strong{
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.reel-video::-webkit-media-controls{
+  display: none !important;
 }
 
 .reel-card:not(.is-active) .reel-video{
@@ -444,7 +551,7 @@ main p strong{
   display: flex;
   justify-content: center;
   gap: 9px;
-  margin-top: -6px;
+  margin-top: 12px;
 }
 
 .reel-dots button{
@@ -527,6 +634,19 @@ main p strong{
     font-size: 50px;
     letter-spacing: 17px;
   }
+  .page-progress-nav{
+    left: 16px;
+  }
+  .nav-label{
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+  .page-progress-nav a{
+    gap: 12px;
+  }
+  .page-progress-nav a.is-active .nav-mark{
+    width: 48px;
+  }
 }
 
 @media screen and (max-width: 750px){
@@ -538,17 +658,50 @@ main p strong{
     font-size: 35px;
     letter-spacing: 15px;
   }
+  .page-progress-nav{
+    left: 12px;
+    gap: 8px;
+    padding-left: 10px;
+  }
+  .page-progress-nav a{
+    min-height: 22px;
+    gap: 8px;
+  }
+  .nav-mark{
+    width: 22px;
+    height: 1px;
+  }
+  .page-progress-nav a.is-active .nav-mark{
+    width: 38px;
+    height: 3px;
+  }
+  .nav-label{
+    position: absolute;
+    left: 52px;
+    max-width: 90px;
+    font-size: 11px;
+    opacity: 0;
+  }
+  .page-progress-nav a.is-active .nav-label{
+    opacity: .9;
+  }
+  .reel-carousel{
+    width: 100%;
+    padding-bottom: 26px;
+  }
   .reel-card{
-    --reel-width: min(66vw, 300px);
+    --reel-width: min(64vw, 285px);
   }
   .reel-stage{
-    height: clamp(430px, 108vw, 590px);
+    height: clamp(440px, 112vw, 570px);
   }
   .reel-card.is-prev{
-    transform: translate(calc(-50% - 28vw), -50%) scale(.7);
+    opacity: .62;
+    transform: translate(calc(-50% - 30vw), -50%) scale(.56);
   }
   .reel-card.is-next{
-    transform: translate(calc(-50% + 28vw), -50%) scale(.7);
+    opacity: .62;
+    transform: translate(calc(-50% + 30vw), -50%) scale(.56);
   }
   .reel-card.is-far-prev,
   .reel-card.is-far-next{
@@ -586,7 +739,7 @@ main p strong{
   main p{
   font-size: 12px;
   }
-  button{
+  button.b-w{
     scale: 0.6;
   }
   button.b-w:hover{
@@ -595,23 +748,22 @@ main p strong{
   }
   .overOnsTextFull .fototje{
     width: 100%;
-    height: 520px;
 
   }
   .reels{
     margin-bottom: 100px;
   }
   .reel-card{
-    --reel-width: min(72vw, 285px);
+    --reel-width: min(68vw, 275px);
   }
   .reel-stage{
-    height: clamp(410px, 125vw, 540px);
+    height: clamp(430px, 128vw, 530px);
   }
   .reel-card.is-prev{
-    transform: translate(calc(-50% - 34vw), -50%) scale(.66);
+    transform: translate(calc(-50% - 32vw), -50%) scale(.54);
   }
   .reel-card.is-next{
-    transform: translate(calc(-50% + 34vw), -50%) scale(.66);
+    transform: translate(calc(-50% + 32vw), -50%) scale(.54);
   }
   .reel-play{
     width: 54px;

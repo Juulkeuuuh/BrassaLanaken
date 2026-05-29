@@ -200,7 +200,29 @@ $(document).ready(function() {
 
   var reelCards = $('.reel-card');
   var reelDots = $('[data-reel-dot]');
+  var reelTouchStartX = 0;
+  var reelTouchStartY = 0;
   var activeReelIndex = 0;
+
+  function playReelVideo(video, card) {
+    var source = $(video).attr('data-src');
+
+    video.muted = false;
+    video.volume = 1;
+
+    if (!$(video).attr('src')) {
+      $(video).attr('src', source);
+      video.load();
+    }
+
+    card.addClass('is-playing');
+    var playRequest = video.play();
+    if (playRequest !== undefined) {
+      playRequest.catch(function () {
+        card.removeClass('is-playing');
+      });
+    }
+  }
 
   function pauseReels() {
     $('.reel-video').each(function () {
@@ -264,19 +286,20 @@ $(document).ready(function() {
 
     var card = $(this).closest('.reel-card');
     var video = card.find('.reel-video').get(0);
-    var source = $(video).attr('data-src');
+    playReelVideo(video, card);
+  });
 
-    if (!$(video).attr('src')) {
-      $(video).attr('src', source);
-      video.load();
+  $('.reel-video').on('click', function (event) {
+    event.stopPropagation();
+
+    if (!$(this).closest('.reel-card').hasClass('is-active')) {
+      return;
     }
 
-    card.addClass('is-playing');
-    var playRequest = video.play();
-    if (playRequest !== undefined) {
-      playRequest.catch(function () {
-        card.removeClass('is-playing');
-      });
+    if (this.paused) {
+      playReelVideo(this, $(this).closest('.reel-card'));
+    } else {
+      this.pause();
     }
   });
 
@@ -288,16 +311,74 @@ $(document).ready(function() {
     $(this).closest('.reel-card').removeClass('is-playing');
   });
 
+  $('.reel-stage').on('touchstart', function (event) {
+    var touch = event.originalEvent.touches[0];
+    reelTouchStartX = touch.clientX;
+    reelTouchStartY = touch.clientY;
+  });
+
+  $('.reel-stage').on('touchend', function (event) {
+    var touch = event.originalEvent.changedTouches[0];
+    var deltaX = touch.clientX - reelTouchStartX;
+    var deltaY = touch.clientY - reelTouchStartY;
+
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+      setActiveReel(activeReelIndex + (deltaX < 0 ? 1 : -1));
+    }
+  });
+
   setActiveReel(activeReelIndex);
 
+  var sectionLinks = $('[data-section-link]');
+  var sections = sectionLinks.map(function () {
+    return $('#' + $(this).attr('data-section-link')).get(0);
+  }).get();
 
-  var bodyHeight = $('body').height();
+  function updateSectionNav() {
+    var scrollTop = $(window).scrollTop();
+    var viewportHeight = $(window).height();
+    var documentHeight = Math.max($(document).height() - viewportHeight, 1);
+    var activeSectionId = sections[0] ? sections[0].id : '';
+
+    $('.page-progress-nav').css('--scroll-progress', Math.min(scrollTop / documentHeight, 1));
+    $('body').toggleClass('show-section-nav', scrollTop > viewportHeight * 0.55);
+
+    sections.forEach(function (section) {
+      if (scrollTop + viewportHeight * 0.38 >= $(section).offset().top) {
+        activeSectionId = section.id;
+      }
+    });
+
+    sectionLinks.each(function () {
+      var isActive = $(this).attr('data-section-link') === activeSectionId;
+      $(this)
+        .toggleClass('is-active', isActive)
+        .attr('aria-current', isActive ? 'true' : null);
+    });
+  }
+
+  sectionLinks.on('click', function (event) {
+    event.preventDefault();
+    var target = $('#' + $(this).attr('data-section-link'));
+
+    if (target.length) {
+      $('html, body').stop().animate({
+        scrollTop: Math.max(target.offset().top - 40, 0)
+      }, 360, 'swing');
+    }
+  });
+
+  $(window).on('scroll resize', updateSectionNav);
+  updateSectionNav();
+
+
   var image = $(".deco-icon");
   $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();
-    var scrollPercent = (scrollTop / bodyHeight) * 100;
+    var scrollableHeight = Math.max($(document).height() - $(window).height(), 1);
+    var scrollPercent = (scrollTop / scrollableHeight) * 100;
 
-    var newPosition = (scrollPercent / 100) * windowHeight;
+    var newPosition = (scrollPercent / 100) * $(window).height();
     image.css("top", newPosition);
 
   });
