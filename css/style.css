@@ -141,7 +141,6 @@ header{
   top: 5%;
   transform: translate(-50%, 0) scale(0.5);
 }
-main button,
 .menukaart{
   opacity: 0.3;
   scale: 0.7;
@@ -170,7 +169,7 @@ header button,
 
 
 
-button:hover,
+button.b-w:hover,
 .reserveer:hover,
 .menukaart:hover{
   cursor: pointer;
@@ -301,6 +300,169 @@ main p strong{
   bottom: 0;
 }
 
+.reels{
+  margin-bottom: 120px;
+}
+
+.reels-intro{
+  margin-bottom: 20px;
+}
+
+.reel-carousel{
+  position: relative;
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: 20px 0 0;
+}
+
+.reel-stage{
+  position: relative;
+  height: clamp(500px, 58vw, 700px);
+  overflow: hidden;
+}
+
+.reel-card{
+  --reel-width: clamp(250px, 30vw, 340px);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--reel-width);
+  aspect-ratio: 9 / 16;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(.42);
+  transition: transform 600ms ease, opacity 600ms ease, filter 600ms ease;
+  filter: brightness(.72);
+}
+
+.reel-card.is-active{
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+  filter: brightness(1);
+}
+
+.reel-card.is-prev{
+  z-index: 3;
+  opacity: .84;
+  pointer-events: auto;
+  transform: translate(calc(-50% - min(18vw, 190px)), -50%) scale(.86);
+}
+
+.reel-card.is-next{
+  z-index: 3;
+  opacity: .84;
+  pointer-events: auto;
+  transform: translate(calc(-50% + min(18vw, 190px)), -50%) scale(.86);
+}
+
+.reel-card.is-far-prev{
+  z-index: 2;
+  opacity: .58;
+  pointer-events: auto;
+  transform: translate(calc(-50% - min(33vw, 350px)), -50%) scale(.52);
+}
+
+.reel-card.is-far-next{
+  z-index: 2;
+  opacity: .58;
+  pointer-events: auto;
+  transform: translate(calc(-50% + min(33vw, 350px)), -50%) scale(.52);
+}
+
+.reel-frame{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color2);
+  padding: 3px;
+  background: #000;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .26);
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.reel-card.is-active .reel-frame{
+  border-width: 2px;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .38);
+}
+
+.reel-video{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reel-card:not(.is-active) .reel-video{
+  pointer-events: none;
+}
+
+.reel-play{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  translate: -50% -50%;
+  border: 1px solid var(--color2);
+  border-radius: 50%;
+  background: var(--color1);
+  opacity: .86;
+  transition: opacity 300ms ease, scale 300ms ease;
+}
+
+.reel-card:not(.is-active) .reel-play{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reel-play::before{
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 19px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 19px solid var(--color2);
+}
+
+.reel-play:hover{
+  cursor: pointer;
+  scale: 1.08;
+}
+
+.reel-card.is-playing .reel-play{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reel-dots{
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: -6px;
+}
+
+.reel-dots button{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color2);
+  opacity: .28;
+  transition: opacity 250ms ease, scale 250ms ease;
+}
+
+.reel-dots button:hover,
+.reel-dots button.is-active{
+  cursor: pointer;
+  opacity: .95;
+  scale: 1.15;
+}
+
 .fotosTwee{
   margin-bottom: 100px;
   aspect-ratio: .58;
@@ -376,6 +538,23 @@ main p strong{
     font-size: 35px;
     letter-spacing: 15px;
   }
+  .reel-card{
+    --reel-width: min(66vw, 300px);
+  }
+  .reel-stage{
+    height: clamp(430px, 108vw, 590px);
+  }
+  .reel-card.is-prev{
+    transform: translate(calc(-50% - 28vw), -50%) scale(.7);
+  }
+  .reel-card.is-next{
+    transform: translate(calc(-50% + 28vw), -50%) scale(.7);
+  }
+  .reel-card.is-far-prev,
+  .reel-card.is-far-next{
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 @media screen and (max-width: 500px){
@@ -410,7 +589,7 @@ main p strong{
   button{
     scale: 0.6;
   }
-  button:hover{
+  button.b-w:hover{
     cursor: pointer;
     scale: 0.7;
   }
@@ -418,6 +597,32 @@ main p strong{
     width: 100%;
     height: 520px;
 
+  }
+  .reels{
+    margin-bottom: 100px;
+  }
+  .reel-card{
+    --reel-width: min(72vw, 285px);
+  }
+  .reel-stage{
+    height: clamp(410px, 125vw, 540px);
+  }
+  .reel-card.is-prev{
+    transform: translate(calc(-50% - 34vw), -50%) scale(.66);
+  }
+  .reel-card.is-next{
+    transform: translate(calc(-50% + 34vw), -50%) scale(.66);
+  }
+  .reel-play{
+    width: 54px;
+    height: 54px;
+  }
+  .reel-play::before{
+    left: 22px;
+    top: 16px;
+    border-top-width: 11px;
+    border-bottom-width: 11px;
+    border-left-width: 17px;
   }
 }
 

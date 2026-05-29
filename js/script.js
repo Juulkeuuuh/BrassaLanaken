@@ -98,7 +98,7 @@ $(document).ready(function() {
         $('.reserveer').css({
           bottom: '0%',
         });
-        $('button, .reserveer, .menukaart').css({
+        $('button.b-w, .reserveer, .menukaart').css({
           scale: '.6',
         });
       
@@ -197,6 +197,98 @@ $(document).ready(function() {
         $(this).addClass('aan');
       }
   })
+
+  var reelCards = $('.reel-card');
+  var reelDots = $('[data-reel-dot]');
+  var activeReelIndex = 0;
+
+  function pauseReels() {
+    $('.reel-video').each(function () {
+      this.pause();
+      $(this).closest('.reel-card').removeClass('is-playing');
+    });
+  }
+
+  function setActiveReel(index) {
+    activeReelIndex = (index + reelCards.length) % reelCards.length;
+    pauseReels();
+
+    reelCards.each(function (cardIndex) {
+      var offset = cardIndex - activeReelIndex;
+
+      if (offset > reelCards.length / 2) {
+        offset -= reelCards.length;
+      }
+
+      if (offset < -reelCards.length / 2) {
+        offset += reelCards.length;
+      }
+
+      $(this)
+        .removeClass('is-active is-prev is-next is-far-prev is-far-next')
+        .attr('aria-hidden', Math.abs(offset) > 2);
+
+      if (offset === 0) {
+        $(this).addClass('is-active');
+      } else if (offset === -1) {
+        $(this).addClass('is-prev');
+      } else if (offset === 1) {
+        $(this).addClass('is-next');
+      } else if (offset === -2) {
+        $(this).addClass('is-far-prev');
+      } else if (offset === 2) {
+        $(this).addClass('is-far-next');
+      }
+    });
+
+    reelDots.each(function (dotIndex) {
+      $(this)
+        .toggleClass('is-active', dotIndex === activeReelIndex)
+        .attr('aria-pressed', dotIndex === activeReelIndex);
+    });
+  }
+
+  reelCards.on('click', function () {
+    var nextIndex = parseInt($(this).attr('data-reel-index'), 10);
+    if (nextIndex !== activeReelIndex) {
+      setActiveReel(nextIndex);
+    }
+  });
+
+  reelDots.on('click', function () {
+    setActiveReel(parseInt($(this).attr('data-reel-dot'), 10));
+  });
+
+  $('.reel-play').on('click', function (event) {
+    event.stopPropagation();
+
+    var card = $(this).closest('.reel-card');
+    var video = card.find('.reel-video').get(0);
+    var source = $(video).attr('data-src');
+
+    if (!$(video).attr('src')) {
+      $(video).attr('src', source);
+      video.load();
+    }
+
+    card.addClass('is-playing');
+    var playRequest = video.play();
+    if (playRequest !== undefined) {
+      playRequest.catch(function () {
+        card.removeClass('is-playing');
+      });
+    }
+  });
+
+  $('.reel-video').on('play', function () {
+    $(this).closest('.reel-card').addClass('is-playing');
+  });
+
+  $('.reel-video').on('pause ended', function () {
+    $(this).closest('.reel-card').removeClass('is-playing');
+  });
+
+  setActiveReel(activeReelIndex);
 
 
   var bodyHeight = $('body').height();
