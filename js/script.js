@@ -147,6 +147,11 @@ $(document).ready(function() {
         // Switch is ON
         $(':root').css('--color1', '#161616');
         $(':root').css('--color2', '#EEE9E7');
+        $(':root').css('--ui-fixed-color', '#EEE9E7');
+        $(':root').css('--ui-glass-bg', 'rgba(22, 22, 22, .48)');
+        $(':root').css('--ui-glass-shadow', '0 16px 48px rgba(0, 0, 0, .28)');
+        $(':root').css('--mobile-nav-line', '#EEE9E7');
+        $(':root').css('--mobile-nav-gradient', 'linear-gradient(to top, rgba(22, 22, 22, 1) 31%, rgba(22, 22, 22, .75) 60%, rgba(22, 22, 22, 0) 100%)');
 
         $('body').css({
           background: '#161616',
@@ -173,6 +178,11 @@ $(document).ready(function() {
         // Switch is OFF
         $(':root').css('--color1', '#EEE9E7');
         $(':root').css('--color2', '#161616');
+        $(':root').css('--ui-fixed-color', '#161616');
+        $(':root').css('--ui-glass-bg', 'rgba(238, 233, 231, .72)');
+        $(':root').css('--ui-glass-shadow', '0 16px 48px rgba(22, 22, 22, .16)');
+        $(':root').css('--mobile-nav-line', '#161616');
+        $(':root').css('--mobile-nav-gradient', 'linear-gradient(to top, rgba(238, 233, 231, 1) 31%, rgba(238, 233, 231, .75) 60%, rgba(238, 233, 231, 0) 100%)');
         $('body').css({
           background: '#EEE9E7',
           color: '#161616',
