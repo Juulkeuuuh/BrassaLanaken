@@ -34,7 +34,6 @@ $(document).ready(function() {
       });
     }
 
-
     // java checkt of user op telefoon of desktop zit
   var isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
     
@@ -62,7 +61,7 @@ $(document).ready(function() {
           $(logo).css({
             top: '10%',
             transform: "scale(0.3)"
-          });
+          }).addClass("fixed");
 
           $('.logo-header img.text').css({
             opacity: 0
@@ -72,11 +71,13 @@ $(document).ready(function() {
           $(logo).css({
             top: '50%',
             transform: "scale(1)"
-          });
+          }).removeClass("fixed");
           $('.logo-header img.text').css({
             opacity: 1
           });
         }
+
+        logo.toggleClass('has-glass', scrollTop > 90);
       
         
       })
@@ -115,6 +116,7 @@ $(document).ready(function() {
           logo.removeClass('translate5050');
             var scrollAmount = $(window).scrollTop();
             var logoHeight = logo.height();
+            logo.toggleClass('has-glass', scrollAmount >= logoHeight * 0.85);
             
             if (scrollAmount <= logoHeight * 1.5) {
                 var topPosition = Math.max(50 - scrollAmount * 0.1, 10);
@@ -157,7 +159,6 @@ $(document).ready(function() {
 
         $('.icon').attr('src', 'assets/svgs/icon-brassa-wit.svg');
         $('.text').attr('src', 'assets/svgs/text-brassa-wit.svg');
-        $('#reserveerknop').attr('src', 'assets/svgs/button.svg');
         $('.deco-icon').attr('src', 'assets/svgs/icon-brassa-wit.svg');
 
         $('#menuknop').attr('src', 'assets/svgs/button-menu.svg');
@@ -186,7 +187,6 @@ $(document).ready(function() {
         $('.deco-icon').attr('src', 'assets/svgs/icon-brassa-zwart.svg');
 
         $('.text').attr('src', 'assets/svgs/text-brassa-zwart.svg');
-        $('#reserveerknop').attr('src', 'assets/svgs/burron-zwart.svg');
         $('#menuknop').attr('src', 'assets/svgs/menuknopzwart.svg');
 
 
@@ -349,6 +349,10 @@ $(document).ready(function() {
       }
     });
 
+    if (scrollTop + viewportHeight >= $(document).height() - 120) {
+      activeSectionId = 'contact';
+    }
+
     sectionLinks.each(function () {
       var isActive = $(this).attr('data-section-link') === activeSectionId;
       $(this)
@@ -362,8 +366,14 @@ $(document).ready(function() {
     var target = $('#' + $(this).attr('data-section-link'));
 
     if (target.length) {
+      var targetScrollTop = Math.max(target.offset().top - 40, 0);
+
+      if ($(this).attr('data-section-link') === 'contact') {
+        targetScrollTop = Math.max($(document).height() - $(window).height(), 0);
+      }
+
       $('html, body').stop().animate({
-        scrollTop: Math.max(target.offset().top - 40, 0)
+        scrollTop: targetScrollTop
       }, 360, 'swing');
     }
   });
