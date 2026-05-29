@@ -1,45 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl-BE">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Brasserie Brassa in Lanaken verwelkomt u voor klassieke brasseriegerechten, suggesties en een warme, stijlvolle sfeer aan de Staatsbaan.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Brasserie Brassa">
+    <link rel="canonical" href="https://brassalanaken.be/">
+    <link rel="icon" href="assets/svgs/icon-brassa-zwart.svg" type="image/svg+xml">
+    <meta property="og:locale" content="nl_BE">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Brasserie Brassa Lanaken">
+    <meta property="og:description" content="Klassieke brasseriegerechten, suggesties en warme gastvrijheid in Lanaken.">
+    <meta property="og:url" content="https://brassalanaken.be/">
+    <meta property="og:site_name" content="Brasserie Brassa">
+    <meta property="og:image" content="https://brassalanaken.be/assets/pngs/og-brassa.jpg">
+    <meta property="og:image:alt" content="Gasten aan tafel bij Brasserie Brassa in Lanaken">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brasserie Brassa Lanaken">
+    <meta name="twitter:description" content="Klassieke brasseriegerechten, suggesties en warme gastvrijheid in Lanaken.">
+    <meta name="twitter:image" content="https://brassalanaken.be/assets/pngs/og-brassa.jpg">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/script.js"></script>
-    <reset class="css"></reset>
-    <title>Brasserie Brassa</title>
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "@id": "https://brassalanaken.be/#restaurant",
+        "name": "Brasserie Brassa",
+        "description": "Brasserie Brassa in Lanaken verwelkomt gasten voor klassieke brasseriegerechten, suggesties en een warme, stijlvolle sfeer.",
+        "url": "https://brassalanaken.be/",
+        "telephone": "+3289857561",
+        "email": "info@brassalanaken.be",
+        "image": [
+          "https://brassalanaken.be/assets/pngs/og-brassa.jpg",
+          "https://brassalanaken.be/assets/pngs/Brassa13.jpg",
+          "https://brassalanaken.be/assets/pngs/Brassa10jpeg.jpeg"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Staatsbaan 2 bus 4",
+          "postalCode": "3620",
+          "addressLocality": "Lanaken",
+          "addressCountry": "BE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 50.90604418167198,
+          "longitude": 5.675317058141542
+        },
+        "servesCuisine": [
+          "Brasserie",
+          "Belgisch",
+          "Frans"
+        ],
+        "priceRange": "€€",
+        "sameAs": [
+          "https://www.instagram.com/brasserie.brassa/",
+          "https://www.facebook.com/profile.php?id=100095773382657"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "11:00",
+            "closes": "21:00"
+          }
+        ]
+      }
+    </script>
+    <title>Brasserie Brassa Lanaken | Brasserie &amp; restaurant aan de Staatsbaan</title>
 </head>
 
 <body>
-  <button class="b-w">
-    <div class="btnback">
-      <div class="btncrcl"></div>
-    </div>
+  <button class="b-w" type="button" aria-label="Wissel tussen donkere en lichte weergave">
+    <span class="btnback">
+      <span class="btncrcl"></span>
+    </span>
   </button>
 
-  <img src="assets/svgs/icon-brassa-wit.svg" alt="groot logo voor decoratie" class="deco-icon">
+  <img src="assets/svgs/icon-brassa-wit.svg" alt="" class="deco-icon" aria-hidden="true">
 
 
   <header>
+    <h1 class="sr-only">Brasserie Brassa in Lanaken</h1>
     <div class="logo-header translate5050">
-      <img src="assets/svgs/icon-brassa-wit.svg" alt="Brasserie Brassa icon" class="icon">
+      <img src="assets/svgs/icon-brassa-wit.svg" alt="" class="icon" aria-hidden="true">
       <br>
-      <img src="assets/svgs/text-brassa-wit.svg" alt="Brasserie Brassa text" class="text">
+      <img src="assets/svgs/text-brassa-wit.svg" alt="Brasserie Brassa" class="text">
     </div>
-    <a href="tel:+3289857561">
-      <button class="reserveer">
-        <img src="assets/svgs/button.svg" alt="reserveer knop" id="reserveerknop">
-      </button>
+    <a href="tel:+3289857561" class="reserveer" aria-label="Bel Brasserie Brassa voor reservaties">
+      <img src="assets/svgs/button.svg" alt="Reserveer" id="reserveerknop">
     </a>
 
-    <img src="assets/svgs/arrow-down.svg" alt="down facing arrow" class="arrow-down">
+    <img src="assets/svgs/arrow-down.svg" alt="" class="arrow-down" aria-hidden="true">
   </header>
 
   <main>
@@ -59,10 +124,10 @@
         </div>
       </div> -->
 
-      <div class="overOns">
-        <h1>over ons</h1>
+      <section class="overOns" aria-labelledby="over-ons-title">
+        <h2 id="over-ons-title">over ons</h2>
         <div class="overOnsTextHalf right-align left-float">
-          <p><strong>Welkom bij Brasserie Brassa</strong> - Brassa betekent “omhelzing”, die de essentie van onze gastvrijheid weerspiegelt. Bij Brassa omarmen we een passie voor gastronomie en een stijlvolle ambiance. Onze gerechten worden met liefde en toewijding bereid, van klassieke brasseriegerechten tot verrassende creaties. Onze ingrediënten worden voor u met zorg geselecteerd. </p>
+          <p><strong>Welkom bij Brasserie Brassa in Lanaken</strong> - Brassa betekent “omhelzing”, die de essentie van onze gastvrijheid weerspiegelt. Bij Brassa omarmen we een passie voor gastronomie en een stijlvolle ambiance. Onze gerechten worden met liefde en toewijding bereid, van klassieke brasseriegerechten tot verrassende creaties. Onze ingrediënten worden voor u met zorg geselecteerd. </p>
         </div>
         <div class="overOnsTextHalf left-align right-float">
           <p>Ons warm en gepassioneerd team staat altijd klaar om u te verwelkomen met open armen, want bij Brassa geloven we dat goed eten mensen samenbrengt.</p>
@@ -71,24 +136,28 @@
         <div class="overOnsTextFull">
           <p>Kom en laat u onderdompelen in de warme omhelzing van Brassa.</p>
         </div>
-      </div>
+      </section>
       <div class="fotos">
-        <div class="foto-1"><img src="assets/pngs/Brassa10jpeg.jpeg" alt="" class="imgOne"></div>
-        <div class="foto-2"><img src="assets/pngs/Brassa11.jpeg" alt="" class="imgTwo"></div>
-        <div class="foto-3"><img src="assets/pngs/Brassa13.jpg" alt="" class="imgThree"></div>
+        <div class="foto-1"><img src="assets/pngs/Brassa10jpeg.jpeg" alt="Gerecht van Brasserie Brassa" class="imgOne" loading="lazy" decoding="async"></div>
+        <div class="foto-2"><img src="assets/pngs/Brassa11.jpeg" alt="Brasseriegerecht bij Brassa in Lanaken" class="imgTwo" loading="lazy" decoding="async"></div>
+        <div class="foto-3"><img src="assets/pngs/Brassa13.jpg" alt="Sfeerbeeld van Brasserie Brassa" class="imgThree" loading="lazy" decoding="async"></div>
       </div>
 
-     <div class="menu">
-        <h1>menu</h1>
+     <section class="menu" aria-labelledby="menu-title">
+        <h2 id="menu-title">menu</h2>
         <div class="overOnsTextFull">
           <p>Ons vaste menu kunt u bekijken via onderstaande link.</p>
           <!-- <p>Ons menu komt zo snel mogelijk online!</p> -->
-          <a href="../assets/Brassa2026-Online.pdf"><button class="menukaart"><img src="assets/svgs/button-menu.svg" alt="" id="menuknop"></button></a>
+          <a href="assets/Brassa2026-Online.pdf" target="_blank" rel="noopener" class="menukaart" aria-label="Bekijk de menukaart van Brasserie Brassa">
+            <img src="assets/svgs/button-menu.svg" alt="Bekijk menu" id="menuknop">
+          </a>
           <p>Onze suggesties van dit moment vindt u hier onder!</p>
 
-          <img src="assets/sugg.pdf" alt="" class="fototje">
+          <object data="assets/sugg.pdf" type="application/pdf" class="fototje" aria-label="Suggesties van Brasserie Brassa">
+            <p><a href="assets/sugg.pdf" target="_blank" rel="noopener">Bekijk de suggesties van Brasserie Brassa</a></p>
+          </object>
         </div> 
-     </div>
+     </section>
 
 
       <!-- <div class="fotos">
@@ -99,26 +168,26 @@
 
 
     <div class="fotosTwee">
-        <div class="foto-1"><img src="assets/pngs/Brassa1.jpeg" alt="" class="imgOne"></div>
-        <div class="foto-2"><img src="assets/pngs/Brassa2.jpeg" alt="" class="imgTwo"></div>
-        <div class="foto-3"><img src="assets/pngs/Brassa5.jpeg" alt="" class="imgThree"></div>
-        <div class="foto-1"><img src="assets/pngs/Brassa4.jpeg" alt="" class="imgFour"></div>
-        <div class="foto-2"><img src="assets/pngs/Brassa12.jpeg" alt="" class="imgFive"></div>
-        <div class="foto-3"><img src="assets/pngs/Brassa9.jpeg" alt="" class="imgSix"></div>
+        <div class="foto-1"><img src="assets/pngs/Brassa1.jpeg" alt="Tafelgerecht bij Brasserie Brassa" class="imgOne" loading="lazy" decoding="async"></div>
+        <div class="foto-2"><img src="assets/pngs/Brassa2.jpeg" alt="Suggestie op het bord bij Brassa" class="imgTwo" loading="lazy" decoding="async"></div>
+        <div class="foto-3"><img src="assets/pngs/Brassa5.jpeg" alt="Dessert of gerecht van Brasserie Brassa" class="imgThree" loading="lazy" decoding="async"></div>
+        <div class="foto-1"><img src="assets/pngs/Brassa4.jpeg" alt="Verse bereiding bij Brasserie Brassa" class="imgFour" loading="lazy" decoding="async"></div>
+        <div class="foto-2"><img src="assets/pngs/Brassa12.jpeg" alt="Gerecht geserveerd bij Brassa Lanaken" class="imgFive" loading="lazy" decoding="async"></div>
+        <div class="foto-3"><img src="assets/pngs/Brassa9.jpeg" alt="Brassasuggestie in Lanaken" class="imgSix" loading="lazy" decoding="async"></div>
       </div>
 
-      <div class="locatie">
-        <h1>locatie</h1>
+      <section class="locatie" aria-labelledby="locatie-title">
+        <h2 id="locatie-title">locatie</h2>
         <div class="overOnsTextFull">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2515.9552469726837!2d5.675317058141542!3d50.90604418167198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0c2fa0ed00001%3A0x3aca073e5592aee1!2sStaatsbaan%202%2C%203620%20Lanaken!5e0!3m2!1snl!2sbe!4v1692120456641!5m2!1snl!2sbe" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe title="Locatie van Brasserie Brassa in Lanaken" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2515.9552469726837!2d5.675317058141542!3d50.90604418167198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0c2fa0ed00001%3A0x3aca073e5592aee1!2sStaatsbaan%202%2C%203620%20Lanaken!5e0!3m2!1snl!2sbe!4v1692120456641!5m2!1snl!2sbe" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-      </div>
+      </section>
 
     <div class="fotosTwee">
-        <div class="foto-1"><img src="assets/pngs/Brassa3.jpeg" alt="" class="imgOne" ></div>
-        <div class="foto-2"><img src="assets/pngs/Brassa7.jpeg" alt="" class="imgTwo"></div>
-        <div class="foto-3"><img src="assets/pngs/Brassa8.jpeg" alt="" class="imgThree" style="top:28%"></div>
-        <div class="foto-1"><img src="assets/pngs/Brassa6.jpeg" alt="" class="imgFour" style="bottom:29.5%"></div>
+        <div class="foto-1"><img src="assets/pngs/Brassa3.jpeg" alt="Bordpresentatie van Brasserie Brassa" class="imgOne" loading="lazy" decoding="async"></div>
+        <div class="foto-2"><img src="assets/pngs/Brassa7.jpeg" alt="Gerecht met garnituur bij Brassa" class="imgTwo" loading="lazy" decoding="async"></div>
+        <div class="foto-3"><img src="assets/pngs/Brassa8.jpeg" alt="Brasseriegerecht in stijlvolle presentatie" class="imgThree" style="top:28%" loading="lazy" decoding="async"></div>
+        <div class="foto-1"><img src="assets/pngs/Brassa6.jpeg" alt="Culinaire suggestie van Brasserie Brassa" class="imgFour" style="bottom:29.5%" loading="lazy" decoding="async"></div>
       </div>
 
     </div>
@@ -142,11 +211,11 @@
           </a>
         </p>
         <div class="forSocial">
-          <a href="https://www.instagram.com/brasserie.brassa/">
-            <img src="assets/svgs/insta.svg" alt="" class="socials">
+          <a href="https://www.instagram.com/brasserie.brassa/" target="_blank" rel="noopener" aria-label="Brasserie Brassa op Instagram">
+            <img src="assets/svgs/insta.svg" alt="Instagram" class="socials">
           </a>
-          <a href="https://www.facebook.com/profile.php?id=100095773382657">
-            <img src="assets/svgs/face.svg" alt="" class="socials">
+          <a href="https://www.facebook.com/profile.php?id=100095773382657" target="_blank" rel="noopener" aria-label="Brasserie Brassa op Facebook">
+            <img src="assets/svgs/face.svg" alt="Facebook" class="socials">
           </a>
 
           <div class="clear noPadding"></div></div>
@@ -195,7 +264,7 @@
   </footer>
 
   <p class="credits">© Copyright 2026 Brasserie Brassa. All rights reserved. <br>
-    Site by <a href="http://www.curversjuul.com" target="_blank">Juul</a></p>
+    Site by <a href="http://www.curversjuul.com" target="_blank" rel="noopener">Juul</a></p>
 
 </body>
 </html>

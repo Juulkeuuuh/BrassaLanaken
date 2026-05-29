@@ -5,7 +5,6 @@ $(document).ready(function() {
   var windowHeight = $(window).height();
   var iconWidth = $('.logo-header img.icon').width();
   var bodyAspectRatio = $(window).width() / $(window).height();
-  console.log(bodyAspectRatio)
 
   // logo kijkt naar breedte/hoogte scherm
   var logo = $(".logo-header");
@@ -50,11 +49,11 @@ $(document).ready(function() {
         $('.arrow-down').fadeOut(500, function() {
           $(this).remove();
         });
-        $('button.reserveer').css({
+        $('.reserveer').css({
           bottom: '5%',
           scale: '.6',
         });
-        $('main button').css({
+        $('.menukaart').css({
           scale: '.6',
         });
 
@@ -96,14 +95,11 @@ $(document).ready(function() {
           $(this).remove();
         });
 
-        $('button.reserveer').css({
+        $('.reserveer').css({
           bottom: '0%',
         });
-        $('button').css({
+        $('button, .reserveer, .menukaart').css({
           scale: '.6',
-        });
-        $('button:hover').css({
-          scale: '.8',
         });
       
       
@@ -211,7 +207,6 @@ $(document).ready(function() {
 
     var newPosition = (scrollPercent / 100) * windowHeight;
     image.css("top", newPosition);
-    console.log(newPosition);
 
   });
 
